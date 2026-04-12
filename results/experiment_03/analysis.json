@@ -1,0 +1,44 @@
+{
+  "experiment": "Exp03: Noisy Cafe \u2014 Speech + Sine Wave",
+  "date": "2026-03-22",
+  "findings": {
+    "ssl_accuracy": {
+      "description": "GCC-PHAT is robust to tonal interference",
+      "error_range": "10-16 degrees regardless of SIR",
+      "reason": "Broadband cross-correlation ignores single-frequency energy"
+    },
+    "beamforming": {
+      "ds_vs_mvdr": "DS gives better WER than MVDR for tonal interference",
+      "ds_improvement": "DS provides 0-1 dB SI-SDR improvement (marginal)",
+      "mvdr_problem": "MVDR attenuates speech by 6dB and introduces distortion with 15mm array. SI-SDR looks better but ASR quality is worse.",
+      "reason": "Array aperture (45mm) is only lambda/7.6 at 1kHz \u2014 too small for meaningful spatial filtering"
+    },
+    "enhancement": {
+      "all_methods_hurt": true,
+      "spectral_sub_degradation": "+14pp WER even without sine interference",
+      "notch_filter_degradation": "+14pp WER (removes tone but introduces artifacts)",
+      "reason": "Whisper is more robust to steady tones than to processing artifacts"
+    },
+    "tone_detection_fix": {
+      "description": "Added tonal interference detection to GatedEnhancer",
+      "detection_method": "Spectral peak prominence above median floor (15dB threshold)",
+      "result": "WER improved from 40.9% to 27.3% by skipping enhancement when tone detected"
+    },
+    "wer_by_frequency": {
+      "500Hz": "+16pp degradation (overlaps speech F0)",
+      "1000Hz": "+3pp degradation (least impact)",
+      "3000Hz": "+16pp degradation (overlaps formant transitions)"
+    },
+    "wer_by_sir": {
+      "SIR_plus7": "27.3% WER (matches baseline)",
+      "SIR_plus1": "27.3% WER (still matches baseline for 1kHz)",
+      "SIR_minus6": "40.9% WER (12pp degradation)"
+    }
+  },
+  "recommendations": [
+    "Use DS beamforming (not MVDR) for tonal interference",
+    "Skip enhancement when tonal interference detected",
+    "MVDR only appropriate for broadband noise with wider arrays",
+    "Enhancement module (spectral sub) needs improvement \u2014 hurts even without interference"
+  ]
+}

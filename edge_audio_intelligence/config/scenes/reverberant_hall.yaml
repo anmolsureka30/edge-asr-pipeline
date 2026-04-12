@@ -1,0 +1,7 @@
+# Reverberant hall preset: high reverberation, clean signal
+scene:
+  room_dim: [15.0, 12.0, 5.0]
+  rt60: 1.5
+  snr_db: 25.0
+  duration_s: 5.0
+  noise_type: "white"

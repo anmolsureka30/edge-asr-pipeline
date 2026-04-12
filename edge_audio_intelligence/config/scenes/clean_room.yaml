@@ -1,0 +1,7 @@
+# Clean room preset: low noise, minimal reverberation
+scene:
+  room_dim: [6.0, 5.0, 3.0]
+  rt60: 0.1
+  snr_db: 30.0
+  duration_s: 3.0
+  noise_type: "white"

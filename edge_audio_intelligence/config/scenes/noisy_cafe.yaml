@@ -1,0 +1,7 @@
+# Noisy cafe preset: high noise, moderate reverberation
+scene:
+  room_dim: [10.0, 8.0, 3.5]
+  rt60: 0.5
+  snr_db: 5.0
+  duration_s: 5.0
+  noise_type: "white"  # Replace with babble noise file for realistic testing

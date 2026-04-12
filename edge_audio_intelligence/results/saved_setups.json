@@ -1,0 +1,38 @@
+[
+  {
+    "name": "My Cafe Test",
+    "room_dim": [
+      10,
+      8,
+      3.5
+    ],
+    "rt60": 0.6,
+    "snr_db": 5,
+    "duration_s": 5,
+    "noise_type": "white",
+    "sources": [
+      {
+        "role": "target_speaker",
+        "signal": "librispeech",
+        "x": 2,
+        "y": 3.5,
+        "z": 1.5
+      },
+      {
+        "role": "background_music",
+        "signal": "sine",
+        "x": 8,
+        "y": 6,
+        "z": 1.5
+      }
+    ],
+    "mic_array_type": "smart_speaker_4",
+    "pipeline_config": {
+      "ssl": "gcc_phat",
+      "beamforming": "mvdr",
+      "enhancement": "wavelet_enhancement",
+      "asr": "whisper_base"
+    },
+    "is_default": true
+  }
+]

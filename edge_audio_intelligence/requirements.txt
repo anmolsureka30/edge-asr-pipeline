@@ -1,0 +1,24 @@
+# Core dependencies
+numpy>=1.24.0
+scipy>=1.10.0
+soundfile>=0.12.0
+pyyaml>=6.0
+
+# Acoustic simulation
+pyroomacoustics>=0.7.0
+
+# Wavelet processing
+PyWavelets>=1.4.0
+
+# Enhancement metrics (optional for V1)
+pesq>=0.0.4
+pystoi>=0.3.3
+
+# ASR (install separately - large)
+# openai-whisper>=20230918
+
+# Visualization
+matplotlib>=3.7.0
+
+# Testing
+pytest>=7.0.0

@@ -1,0 +1,56 @@
+# Default experiment configuration
+# See CLAUDE.md Section 3.1 for the full config structure
+
+experiment:
+  name: "default"
+  seed: 42
+  results_dir: "results"
+
+scene:
+  room_dim: [6.0, 5.0, 3.0]
+  rt60: 0.3
+  snr_db: 15.0
+  duration_s: 3.0
+  fs: 16000
+  noise_type: "white"
+
+  sources:
+    - position: [2.0, 3.5, 1.5]
+      signal_type: "speech"
+      label: "S0"
+      amplitude: 1.0
+
+  mic_array:
+    type: "linear"
+    n_mics: 4
+    spacing: 0.05
+    center: [3.0, 2.5]
+    height: 1.2
+
+pipeline:
+  type: "cascade"  # cascade or guided
+
+  ssl:
+    method: "GCC-PHAT"
+    n_fft: 1024
+
+  beamforming:
+    method: "Delay-and-Sum"
+    use_fractional_delay: true
+
+  enhancement:
+    method: "Spectral-Subtraction"
+    n_fft: 512
+    alpha: 2.0
+    beta: 0.01
+
+  asr:
+    method: "Whisper"
+    model_size: "base"
+    language: "en"
+    device: "cpu"
+
+evaluation:
+  mode: "corner_cases"  # corner_cases, full_grid, quick
+  snr_levels: [5, 15, 30]
+  rt60_levels: [0.0, 0.3, 0.6, 0.9, 1.2, 1.5]

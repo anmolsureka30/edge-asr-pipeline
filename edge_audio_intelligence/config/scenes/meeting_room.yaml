@@ -1,0 +1,7 @@
+# Meeting room preset: moderate conditions, multiple speakers
+scene:
+  room_dim: [8.0, 6.0, 3.0]
+  rt60: 0.4
+  snr_db: 15.0
+  duration_s: 5.0
+  noise_type: "white"

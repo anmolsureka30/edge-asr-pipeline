@@ -1,0 +1,1400 @@
+[
+  {
+    "run_id": "run_413396dc",
+    "timestamp": "2026-03-22T22:57:58",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "MVDR",
+      "enhancement": "Wavelet-Enhancement (gated)",
+      "asr": "Whisper-small",
+      "vad": "AtomicVAD + TEN VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE",
+        "onset_s": 1,
+        "offset_s": 10
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD",
+        "onset_s": 7,
+        "offset_s": 14
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 88.77699967300191,
+      "enh_si_sdr": 6.172429835286462,
+      "bf_si_sdr_improvement": -0.03111003638383103,
+      "enh_pesq": 1.2070207595825195,
+      "enh_stoi": 0.7077388052419508,
+      "asr_wer": 0.6785714285714286,
+      "total_latency_ms": 85171.59791698214,
+      "total_rtf": 5.678106527798809,
+      "latency_breakdown": "GCC-PHAT: 178ms | MVDR: 14310ms | Wavelet-Enhancement-gated: 5116ms | Whisper-small: 70308ms",
+      "total_macs": 5059768832,
+      "total_macs_formatted": "5.06G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 425857.9895849107,
+      "asr_cer": 0.44936708860759494,
+      "asr_insertions": 11,
+      "asr_deletions": 0,
+      "asr_substitutions": 8,
+      "bf_output_snr": 6.393976374263262,
+      "enh_si_sdr_improvement": 0.0971078426538492
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_413396dc",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_413396dc"
+  },
+  {
+    "run_id": "run_184adc0c",
+    "timestamp": "2026-03-22T22:56:05",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "MVDR",
+      "enhancement": "Wavelet-Enhancement (gated)",
+      "asr": "Whisper-small",
+      "vad": "AtomicVAD + TEN VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE",
+        "onset_s": 1,
+        "offset_s": 10
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD",
+        "onset_s": 7,
+        "offset_s": 14
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 88.77699967300191,
+      "enh_si_sdr": 6.172429835286462,
+      "bf_si_sdr_improvement": -0.03111003638383103,
+      "enh_pesq": 1.2070207595825195,
+      "enh_stoi": 0.7077388052419508,
+      "asr_wer": 0.6785714285714286,
+      "total_latency_ms": 2170.344918151386,
+      "total_rtf": 0.1446896612100924,
+      "latency_breakdown": "GCC-PHAT: 76ms | MVDR: 19ms | Wavelet-Enhancement-gated: 9ms | Whisper-small: 2071ms",
+      "total_macs": 5059768832,
+      "total_macs_formatted": "5.06G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 10851.72459075693,
+      "asr_cer": 0.44936708860759494,
+      "asr_insertions": 11,
+      "asr_deletions": 0,
+      "asr_substitutions": 8,
+      "bf_output_snr": 6.393976374263262,
+      "enh_si_sdr_improvement": 0.0971078426538492
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_184adc0c",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_184adc0c"
+  },
+  {
+    "run_id": "run_37cb3bde",
+    "timestamp": "2026-03-22T22:44:11",
+    "scene_config": {
+      "room_dim": [
+        4,
+        3.5,
+        2.8
+      ],
+      "rt60": 0,
+      "snr_db": 30,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "MVDR",
+      "enhancement": "Wavelet-Enhancement (gated)",
+      "asr": "Whisper-small",
+      "vad": "AtomicVAD + TEN VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          2,
+          2.5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE",
+        "onset_s": 1,
+        "offset_s": 14
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 0.015471784938895894,
+      "enh_si_sdr": 24.708333706414074,
+      "bf_si_sdr_improvement": 5.870656163067686,
+      "enh_pesq": 2.8377223014831543,
+      "enh_stoi": 0.9365970900257248,
+      "asr_wer": 0.14285714285714285,
+      "total_latency_ms": 2313.586250995286,
+      "total_rtf": 0.15423908339968573,
+      "latency_breakdown": "GCC-PHAT: 107ms | MVDR: 29ms | Wavelet-Enhancement-gated: 11ms | Whisper-small: 2172ms",
+      "total_macs": 5059768832,
+      "total_macs_formatted": "5.06G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 11567.931254976429,
+      "asr_cer": 0.0189873417721519,
+      "asr_insertions": 0,
+      "asr_deletions": 1,
+      "asr_substitutions": 3,
+      "bf_output_snr": 35.88339572807993,
+      "enh_si_sdr_improvement": -11.17873043140451
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_37cb3bde",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_37cb3bde"
+  },
+  {
+    "run_id": "run_07ab3080",
+    "timestamp": "2026-03-22T22:39:32",
+    "scene_config": {
+      "room_dim": [
+        6,
+        5,
+        3
+      ],
+      "rt60": 0,
+      "snr_db": 30,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "MVDR",
+      "enhancement": "Wavelet-Enhancement (gated)",
+      "asr": "Whisper-small",
+      "vad": "AtomicVAD + TEN VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          2,
+          3.5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE",
+        "onset_s": 0.0,
+        "offset_s": -1.0
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 1.6409745441157213,
+      "enh_si_sdr": 12.091134325529843,
+      "bf_si_sdr_improvement": -19.216573722771173,
+      "enh_pesq": 2.5511105060577393,
+      "enh_stoi": 0.8782935222455405,
+      "asr_wer": 0.07142857142857142,
+      "total_latency_ms": 73326.43091620412,
+      "total_rtf": 4.888428727746941,
+      "latency_breakdown": "GCC-PHAT: 244ms | MVDR: 13882ms | Wavelet-Enhancement-gated: 4795ms | Whisper-small: 58928ms",
+      "total_macs": 5059768832,
+      "total_macs_formatted": "5.06G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 366632.1545810206,
+      "asr_cer": 0.012658227848101266,
+      "asr_insertions": 0,
+      "asr_deletions": 0,
+      "asr_substitutions": 2,
+      "bf_output_snr": 12.490611102847724,
+      "enh_si_sdr_improvement": -0.33467054923596073
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_07ab3080",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_07ab3080"
+  },
+  {
+    "run_id": "run_670df19e",
+    "timestamp": "2026-03-22T22:37:37",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "MVDR",
+      "enhancement": "Wavelet-Enhancement (gated)",
+      "asr": "Whisper-small",
+      "vad": "AtomicVAD + TEN VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE",
+        "onset_s": 1,
+        "offset_s": 10
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD",
+        "onset_s": 7,
+        "offset_s": 14
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 88.77699967300191,
+      "enh_si_sdr": 6.172429835286462,
+      "bf_si_sdr_improvement": -0.03111003638383103,
+      "enh_pesq": 1.2070207595825195,
+      "enh_stoi": 0.7077388052419508,
+      "asr_wer": 0.6785714285714286,
+      "total_latency_ms": 17090.162626001984,
+      "total_rtf": 1.139344175066799,
+      "latency_breakdown": "GCC-PHAT: 205ms | MVDR: 14301ms | Wavelet-Enhancement-gated: 1499ms | Whisper-small: 2579ms",
+      "total_macs": 5059768832,
+      "total_macs_formatted": "5.06G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 85450.81313000992,
+      "asr_cer": 0.44936708860759494,
+      "asr_insertions": 11,
+      "asr_deletions": 0,
+      "asr_substitutions": 8,
+      "bf_output_snr": 6.393976374263262,
+      "enh_si_sdr_improvement": 0.0971078426538492
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_670df19e",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_670df19e"
+  },
+  {
+    "run_id": "run_c3394d4f",
+    "timestamp": "2026-03-22T22:35:39",
+    "scene_config": {
+      "room_dim": [
+        6,
+        5,
+        3
+      ],
+      "rt60": 0,
+      "snr_db": 30,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "MVDR",
+      "enhancement": "Wavelet-Enhancement (gated)",
+      "asr": "Whisper-small",
+      "vad": "AtomicVAD + TEN VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          2,
+          3.5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE",
+        "onset_s": 0.0,
+        "offset_s": -1.0
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 1.6409745441157213,
+      "enh_si_sdr": 12.091134325529843,
+      "bf_si_sdr_improvement": -19.216573722771173,
+      "enh_pesq": 2.5511105060577393,
+      "enh_stoi": 0.8782935222455405,
+      "asr_wer": 0.07142857142857142,
+      "total_latency_ms": 2172.6435420569032,
+      "total_rtf": 0.14484290280379356,
+      "latency_breakdown": "GCC-PHAT: 92ms | MVDR: 29ms | Wavelet-Enhancement-gated: 9ms | Whisper-small: 2047ms",
+      "total_macs": 5059768832,
+      "total_macs_formatted": "5.06G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 10863.217710284516,
+      "asr_cer": 0.012658227848101266,
+      "asr_insertions": 0,
+      "asr_deletions": 0,
+      "asr_substitutions": 2,
+      "bf_output_snr": 12.490611102847724,
+      "enh_si_sdr_improvement": -0.33467054923596073
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_c3394d4f",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_c3394d4f"
+  },
+  {
+    "run_id": "run_6953fcf8",
+    "timestamp": "2026-03-22T22:32:40",
+    "scene_config": {
+      "room_dim": [
+        6,
+        5,
+        3
+      ],
+      "rt60": 0,
+      "snr_db": 30,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "MVDR",
+      "enhancement": "Wavelet-Enhancement (gated)",
+      "asr": "Whisper-small",
+      "vad": "AtomicVAD + TEN VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          2,
+          3.5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE",
+        "onset_s": 0.0,
+        "offset_s": -1.0
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 1.6409745441157213,
+      "enh_si_sdr": 12.091134325529843,
+      "bf_si_sdr_improvement": -19.216573722771173,
+      "enh_pesq": 2.5511105060577393,
+      "enh_stoi": 0.8782935222455405,
+      "asr_wer": 0.07142857142857142,
+      "total_latency_ms": 6428.5495828371495,
+      "total_rtf": 0.4285699721891433,
+      "latency_breakdown": "GCC-PHAT: 72ms | MVDR: 23ms | Wavelet-Enhancement-gated: 26ms | Whisper-small: 6312ms",
+      "total_macs": 5059768832,
+      "total_macs_formatted": "5.06G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 32142.747914185748,
+      "asr_cer": 0.012658227848101266,
+      "asr_insertions": 0,
+      "asr_deletions": 0,
+      "asr_substitutions": 2,
+      "bf_output_snr": 12.490611102847724,
+      "enh_si_sdr_improvement": -0.33467054923596073
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_6953fcf8",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_6953fcf8"
+  },
+  {
+    "run_id": "run_0c3a80a5",
+    "timestamp": "2026-03-22T05:30:16",
+    "scene_config": {
+      "room_dim": [
+        10,
+        8,
+        3.5
+      ],
+      "rt60": 0.6,
+      "snr_db": 5,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "MUSIC",
+      "beamforming": "MVDR",
+      "enhancement": "Wavelet-Enhancement (gated)",
+      "asr": "Whisper-small",
+      "vad": "AtomicVAD + TEN VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          3,
+          5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE",
+        "onset_s": 1,
+        "offset_s": 8.9
+      },
+      {
+        "position": [
+          7,
+          3,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1284/1180/1284-1180-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HE WORE BLUE SILK STOCKINGS BLUE KNEE PANTS WITH GOLD BUCKLES A BLUE RUFFLED WAIST AND A JACKET OF BRIGHT BLUE BRAIDED WITH GOLD",
+        "onset_s": 6.3,
+        "offset_s": 15.5
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 108.565051177078,
+      "enh_si_sdr": -52.991635065492126,
+      "bf_si_sdr_improvement": 1.2186738236938974,
+      "enh_pesq": 1.1134570837020874,
+      "enh_stoi": 0.535119724494618,
+      "asr_wer": 0.75,
+      "total_latency_ms": 5264.977748971432,
+      "total_rtf": 0.3509985165980955,
+      "latency_breakdown": "MUSIC: 34ms | MVDR: 23ms | Wavelet-Enhancement-gated: 36ms | Whisper-small: 5173ms",
+      "total_macs": 5000000000,
+      "total_macs_formatted": "5.00G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 26324.888744857162,
+      "asr_cer": 0.5,
+      "asr_insertions": 2,
+      "asr_deletions": 2,
+      "asr_substitutions": 17,
+      "bf_output_snr": -2.862364229720833,
+      "enh_si_sdr_improvement": -0.07960101634997585
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_0c3a80a5",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_0c3a80a5"
+  },
+  {
+    "run_id": "run_52fa9205",
+    "timestamp": "2026-03-22T05:17:53",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "MUSIC",
+      "beamforming": "MVDR",
+      "enhancement": "Wavelet-Enhancement (gated)",
+      "asr": "Whisper-small",
+      "vad": "AtomicVAD + TEN VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE",
+        "onset_s": 1,
+        "offset_s": 10
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD",
+        "onset_s": 7,
+        "offset_s": 14
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 121.0,
+      "enh_si_sdr": -24.320836209086913,
+      "bf_si_sdr_improvement": -0.8534610134371574,
+      "enh_pesq": 1.1439027786254883,
+      "enh_stoi": 0.7129194131756963,
+      "asr_wer": 0.5357142857142857,
+      "total_latency_ms": 5526.294666808099,
+      "total_rtf": 0.36841964445387326,
+      "latency_breakdown": "MUSIC: 39ms | MVDR: 32ms | Wavelet-Enhancement-gated: 31ms | Whisper-small: 5424ms",
+      "total_macs": 5000000000,
+      "total_macs_formatted": "5.00G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 27631.473334040493,
+      "asr_cer": 0.3987341772151899,
+      "asr_insertions": 8,
+      "asr_deletions": 2,
+      "asr_substitutions": 5,
+      "bf_output_snr": -3.200368632556139,
+      "enh_si_sdr_improvement": 0.36803079490387347
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_52fa9205",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_52fa9205"
+  },
+  {
+    "run_id": "run_66653ee4",
+    "timestamp": "2026-03-22T04:51:23",
+    "scene_config": {
+      "room_dim": [
+        6,
+        5,
+        3
+      ],
+      "rt60": 0,
+      "snr_db": 30,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "SRP-PHAT",
+      "beamforming": "Delay-and-Sum",
+      "enhancement": "Spectral-Subtraction",
+      "asr": "Whisper-tiny",
+      "vad": "TEN-VAD"
+    },
+    "sources": [
+      {
+        "position": [
+          2,
+          3.5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 95.99999999999997,
+      "enh_si_sdr": -21.33451848541375,
+      "bf_si_sdr_improvement": -23.109288694484032,
+      "enh_pesq": 1.9159002304077148,
+      "enh_stoi": 0.8787668971843566,
+      "asr_wer": 0.17857142857142858,
+      "total_latency_ms": 2560.983042116277,
+      "total_rtf": 0.17073220280775178,
+      "latency_breakdown": "SRP-PHAT: 34ms | Delay-and-Sum: 15ms | Spectral-Subtraction: 17ms | Whisper-tiny: 2495ms",
+      "total_macs": 750000000,
+      "total_macs_formatted": "750.00M",
+      "total_parameters": 39000000,
+      "total_energy_mj": 12804.915210581385,
+      "asr_cer": 0.05063291139240506,
+      "asr_insertions": 0,
+      "asr_deletions": 1,
+      "asr_substitutions": 4,
+      "bf_output_snr": -2.063913438502134,
+      "enh_si_sdr_improvement": -0.692115045358058
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_66653ee4",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_66653ee4"
+  },
+  {
+    "run_id": "run_947748c7",
+    "timestamp": "2026-03-22T04:39:17",
+    "scene_config": {
+      "room_dim": [
+        10,
+        8,
+        3.5
+      ],
+      "rt60": 0.6,
+      "snr_db": 5,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "SRP-PHAT",
+      "beamforming": "Delay-and-Sum",
+      "vad": "AtomicVAD",
+      "asr": "Whisper-tiny"
+    },
+    "sources": [
+      {
+        "position": [
+          3,
+          5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          7,
+          3,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1284/1180/1284-1180-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HE WORE BLUE SILK STOCKINGS BLUE KNEE PANTS WITH GOLD BUCKLES A BLUE RUFFLED WAIST AND A JACKET OF BRIGHT BLUE BRAIDED WITH GOLD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 107.565051177078,
+      "enh_si_sdr": -3.243074691069803,
+      "bf_si_sdr_improvement": 0.7179714272984574,
+      "asr_wer": 1.1785714285714286,
+      "total_latency_ms": 1912.328917067498,
+      "total_rtf": 0.12748859447116653,
+      "latency_breakdown": "SRP-PHAT: 37ms | Delay-and-Sum: 17ms | AtomicVAD: 565ms | Whisper-tiny: 1858ms",
+      "total_macs": 759241500,
+      "total_macs_formatted": "759.24M",
+      "total_parameters": 39000298,
+      "total_energy_mj": 9561.64458533749,
+      "asr_cer": 0.7974683544303798,
+      "asr_insertions": 5,
+      "asr_deletions": 0,
+      "asr_substitutions": 28,
+      "bf_output_snr": -4.442875804319594
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_947748c7",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_947748c7"
+  },
+  {
+    "run_id": "run_2d0aef48",
+    "timestamp": "2026-03-22T04:37:41",
+    "scene_config": {
+      "room_dim": [
+        10,
+        8,
+        3.5
+      ],
+      "rt60": 0.6,
+      "snr_db": 5,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "SRP-PHAT",
+      "beamforming": "Delay-and-Sum",
+      "vad": "Wavelet-VAD",
+      "enhancement": "Spectral-Subtraction (gated)",
+      "asr": "Whisper-tiny"
+    },
+    "sources": [
+      {
+        "position": [
+          3,
+          5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          7,
+          3,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1284/1180/1284-1180-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HE WORE BLUE SILK STOCKINGS BLUE KNEE PANTS WITH GOLD BUCKLES A BLUE RUFFLED WAIST AND A JACKET OF BRIGHT BLUE BRAIDED WITH GOLD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 107.565051177078,
+      "enh_si_sdr": -30.919032824896057,
+      "bf_si_sdr_improvement": 0.7179714272984574,
+      "enh_pesq": 1.079106092453003,
+      "enh_stoi": 0.43451360563957236,
+      "asr_wer": 1.0714285714285714,
+      "total_latency_ms": 4153.54379103519,
+      "total_rtf": 0.276902919402346,
+      "latency_breakdown": "SRP-PHAT: 36ms | Delay-and-Sum: 15ms | Wavelet-VAD: 38ms | Spectral-Subtraction-gated: 17ms | Whisper-tiny: 4086ms",
+      "total_macs": 757672392,
+      "total_macs_formatted": "757.67M",
+      "total_parameters": 39000000,
+      "total_energy_mj": 20767.71895517595,
+      "asr_cer": 0.7721518987341772,
+      "asr_insertions": 3,
+      "asr_deletions": 0,
+      "asr_substitutions": 27,
+      "bf_output_snr": -4.442875804319594,
+      "enh_si_sdr_improvement": 0.6392996893620158
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_2d0aef48",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_2d0aef48"
+  },
+  {
+    "run_id": "run_508d210c",
+    "timestamp": "2026-03-20T01:45:23",
+    "scene_config": {
+      "room_dim": [
+        10,
+        8,
+        3.5
+      ],
+      "rt60": 0.6,
+      "snr_db": 5,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "Delay-and-Sum",
+      "asr": "Whisper-small"
+    },
+    "sources": [
+      {
+        "position": [
+          3,
+          5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          7,
+          3,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1284/1180/1284-1180-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HE WORE BLUE SILK STOCKINGS BLUE KNEE PANTS WITH GOLD BUCKLES A BLUE RUFFLED WAIST AND A JACKET OF BRIGHT BLUE BRAIDED WITH GOLD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 41.68127428418967,
+      "enh_si_sdr": -3.400769459490948,
+      "bf_si_sdr_improvement": 0.5602766588773127,
+      "asr_wer": 0.9642857142857143,
+      "total_latency_ms": 5621.588084148243,
+      "total_rtf": 0.3747725389432162,
+      "latency_breakdown": "GCC-PHAT: 9ms | Delay-and-Sum: 15ms | Whisper-small: 5598ms",
+      "total_macs": 5059768832,
+      "total_macs_formatted": "5.06G",
+      "total_parameters": 244000000,
+      "total_energy_mj": 28107.940420741215,
+      "asr_cer": 0.5379746835443038,
+      "asr_insertions": 6,
+      "asr_deletions": 0,
+      "asr_substitutions": 21,
+      "bf_output_snr": -4.434844726708652
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_508d210c",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_508d210c"
+  },
+  {
+    "run_id": "run_5a8f45ff",
+    "timestamp": "2026-03-19T23:18:33",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "MUSIC",
+      "beamforming": "Delay-and-Sum",
+      "enhancement": "Wavelet-Enhancement",
+      "asr": "Whisper-small"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 48.0,
+      "enh_si_sdr": -22.10119406665426,
+      "bf_si_sdr_improvement": 0.06395137741503465,
+      "enh_pesq": 1.0955270528793335,
+      "enh_stoi": 0.6434751337888827,
+      "asr_wer": 0.39285714285714285,
+      "total_latency_ms": 2995.386582915671,
+      "total_rtf": 0.19969243886104474,
+      "latency_breakdown": "MUSIC: 32ms | Delay-and-Sum: 15ms | Wavelet-Enhancement: 5ms | Whisper-small: 2943ms",
+      "asr_cer": 0.2088607594936709,
+      "asr_insertions": 0,
+      "asr_deletions": 1,
+      "asr_substitutions": 10,
+      "bf_output_snr": -3.4721628348493674,
+      "enh_si_sdr_improvement": 0.47292762531248655
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_5a8f45ff",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_5a8f45ff"
+  },
+  {
+    "run_id": "run_87ddd1fb",
+    "timestamp": "2026-03-19T23:17:56",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "MUSIC",
+      "beamforming": "Delay-and-Sum",
+      "asr": "Whisper-small"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 48.0,
+      "enh_si_sdr": 4.210304040959682,
+      "bf_si_sdr_improvement": 0.06395137741503465,
+      "asr_wer": 0.25,
+      "total_latency_ms": 3022.3484170855954,
+      "total_rtf": 0.20148989447237303,
+      "latency_breakdown": "MUSIC: 31ms | Delay-and-Sum: 14ms | Whisper-small: 2977ms",
+      "asr_cer": 0.0949367088607595,
+      "asr_insertions": 1,
+      "asr_deletions": 0,
+      "asr_substitutions": 6,
+      "bf_output_snr": -3.4721628348493674
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_87ddd1fb",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_87ddd1fb"
+  },
+  {
+    "run_id": "run_789198c8",
+    "timestamp": "2026-03-19T23:17:07",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "MUSIC",
+      "asr": "Whisper-small"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 48.0,
+      "asr_wer": 0.32142857142857145,
+      "total_latency_ms": 2661.4735419861972,
+      "total_rtf": 0.17743156946574648,
+      "latency_breakdown": "MUSIC: 30ms | Whisper-small: 2631ms",
+      "asr_cer": 0.10759493670886076,
+      "asr_insertions": 1,
+      "asr_deletions": 0,
+      "asr_substitutions": 8
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_789198c8",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_789198c8"
+  },
+  {
+    "run_id": "run_103cd5a1",
+    "timestamp": "2026-03-19T23:16:56",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "MUSIC",
+      "asr": "Whisper-small"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 48.0,
+      "asr_wer": 0.32142857142857145,
+      "total_latency_ms": 2953.423374914564,
+      "total_rtf": 0.19689489166097093,
+      "latency_breakdown": "MUSIC: 37ms | Whisper-small: 2916ms",
+      "asr_cer": 0.10759493670886076,
+      "asr_insertions": 1,
+      "asr_deletions": 0,
+      "asr_substitutions": 8
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_103cd5a1",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_103cd5a1"
+  },
+  {
+    "run_id": "run_9fbd2a23",
+    "timestamp": "2026-03-19T23:16:44",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "asr": "Whisper-small"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 80.75387703417593,
+      "asr_wer": 0.32142857142857145,
+      "total_latency_ms": 2985.909041017294,
+      "total_rtf": 0.19906060273448625,
+      "latency_breakdown": "GCC-PHAT: 9ms | Whisper-small: 2977ms",
+      "asr_cer": 0.10759493670886076,
+      "asr_insertions": 1,
+      "asr_deletions": 0,
+      "asr_substitutions": 8
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_9fbd2a23",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_9fbd2a23"
+  },
+  {
+    "run_id": "run_6b4884e4",
+    "timestamp": "2026-03-19T23:16:12",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "SRP-PHAT",
+      "asr": "Whisper-small"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 140.0,
+      "asr_wer": 0.32142857142857145,
+      "total_latency_ms": 2986.098040943034,
+      "total_rtf": 0.1990732027295356,
+      "latency_breakdown": "SRP-PHAT: 37ms | Whisper-small: 2949ms",
+      "asr_cer": 0.10759493670886076,
+      "asr_insertions": 1,
+      "asr_deletions": 0,
+      "asr_substitutions": 8
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_6b4884e4",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_6b4884e4"
+  },
+  {
+    "run_id": "run_c3acf4f1",
+    "timestamp": "2026-03-19T23:14:43",
+    "scene_config": {
+      "room_dim": [
+        7,
+        6,
+        3
+      ],
+      "rt60": 0.4,
+      "snr_db": 20,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "Delay-and-Sum",
+      "enhancement": "Spectral-Subtraction",
+      "asr": "Whisper-small"
+    },
+    "sources": [
+      {
+        "position": [
+          2.5,
+          4,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      },
+      {
+        "position": [
+          5,
+          2,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1221/135766/1221-135766-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1.0,
+        "label": "S1",
+        "transcription": "HOW STRANGE IT SEEMED TO THE SAD WOMAN AS SHE WATCHED THE GROWTH AND THE BEAUTY THAT BECAME EVERY DAY MORE BRILLIANT AND THE INTELLIGENCE THAT THREW ITS QUIVERING SUNSHINE OVER THE TINY FEATURES OF THIS CHILD"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 80.75387703417593,
+      "enh_si_sdr": -22.097774259955155,
+      "bf_si_sdr_improvement": -1.5199292740668477,
+      "enh_pesq": 1.0490846633911133,
+      "enh_stoi": 0.5700419395175481,
+      "asr_wer": 1.1071428571428572,
+      "total_latency_ms": 3058.399374829605,
+      "total_rtf": 0.203893291655307,
+      "latency_breakdown": "GCC-PHAT: 9ms | Delay-and-Sum: 15ms | Spectral-Subtraction: 16ms | Whisper-small: 3019ms",
+      "asr_cer": 0.7721518987341772,
+      "asr_insertions": 10,
+      "asr_deletions": 1,
+      "asr_substitutions": 20,
+      "bf_output_snr": -3.462867955053822,
+      "enh_si_sdr_improvement": 0.8903865529316128
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_c3acf4f1",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_c3acf4f1"
+  },
+  {
+    "run_id": "run_d0be1514",
+    "timestamp": "2026-03-19T23:14:15",
+    "scene_config": {
+      "room_dim": [
+        6,
+        5,
+        3
+      ],
+      "rt60": 0,
+      "snr_db": 30,
+      "duration_s": 15
+    },
+    "pipeline_config": {
+      "ssl": "GCC-PHAT",
+      "beamforming": "Delay-and-Sum",
+      "enhancement": "Spectral-Subtraction",
+      "asr": "Whisper-small"
+    },
+    "sources": [
+      {
+        "position": [
+          2,
+          3.5,
+          1.5
+        ],
+        "signal_type": "speech",
+        "audio_path": "/Users/anmolsureka/Documents/Wavelets/data/librispeech/LibriSpeech/test-clean/1089/134686/1089-134686-0000.flac",
+        "frequency": 440.0,
+        "amplitude": 1,
+        "label": "S0",
+        "transcription": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+      }
+    ],
+    "metrics": {
+      "ssl_angular_error": 3.9459614224035136,
+      "enh_si_sdr": -21.374240405610973,
+      "bf_si_sdr_improvement": -23.28222016199844,
+      "enh_pesq": 1.9154388904571533,
+      "enh_stoi": 0.8787457061999152,
+      "asr_wer": 0.21428571428571427,
+      "total_latency_ms": 4566.086666076444,
+      "total_rtf": 0.3044057777384296,
+      "latency_breakdown": "GCC-PHAT: 9ms | Delay-and-Sum: 15ms | Spectral-Subtraction: 17ms | Whisper-small: 4526ms",
+      "asr_cer": 0.03164556962025317,
+      "asr_insertions": 0,
+      "asr_deletions": 1,
+      "asr_substitutions": 5,
+      "bf_output_snr": -2.062987235520687,
+      "enh_si_sdr_improvement": -0.7015913144870076
+    },
+    "remark": "",
+    "figures_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/figures/run_d0be1514",
+    "audio_dir": "/Users/anmolsureka/Documents/Wavelets/edge_audio_intelligence/results/audio/run_d0be1514"
+  }
+]
