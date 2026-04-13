@@ -10,6 +10,9 @@ pyroomacoustics>=0.7.0
 # Wavelet processing
 PyWavelets>=1.4.0
 
+#Speaker Diarization
+pyannote>=4.0.4
+
 # Enhancement metrics (optional for V1)
 pesq>=0.0.4
 pystoi>=0.3.3
@@ -22,3 +25,4 @@ matplotlib>=3.7.0
 
 # Testing
 pytest>=7.0.0
+
