@@ -65,6 +65,14 @@ def build_module(stage: str, value: str):
             from edge_audio_intelligence.modules.vad.atomic_vad_module import AtomicVADModule
             return AtomicVADModule()
 
+    elif stage == "diarization":
+        if value == "pyannote_3.1":
+            from edge_audio_intelligence.modules.diarization.pyannote_diarizer import PyannoteDiarizer
+            return PyannoteDiarizer(name="Pyannote_3.1", model_name="pyannote/speaker-diarization-3.1")
+        elif value == "pyannote_3.0":
+            from edge_audio_intelligence.modules.diarization.pyannote_diarizer import PyannoteDiarizer
+            return PyannoteDiarizer(name="Pyannote_3.0", model_name="pyannote/speaker-diarization-3.0")
+
     return None
 
 
@@ -75,7 +83,8 @@ def run_pipeline(
     enh_val: str,
     asr_val: str,
     vad_val: str,
-    enh_gate: bool,
+    diarization_val: str = "none",
+    enh_gate: bool = False,
     on_progress: Optional[Callable] = None,
 ) -> Dict[str, Any]:
     """Run the full pipeline on a scene.
@@ -181,6 +190,12 @@ def run_pipeline(
             pipeline.add_module(enh_module)
             module_names["enhancement"] = enh_module.name
 
+    # Diarization runs after enhancement, before ASR
+    dia_module = build_module("diarization", diarization_val)
+    if dia_module:
+        pipeline.add_module(dia_module)
+        module_names["diarization"] = dia_module.name
+
     asr_module = build_module("asr", asr_val)
     if asr_module:
         pipeline.add_module(asr_module)
@@ -204,7 +219,14 @@ def run_pipeline(
         progress("beamforming", 0.5, "Beamforming complete", data.get("bf_latency_ms", 0))
 
     if "enhancement_latency_ms" in data:
-        progress("enhancement", 0.7, "Enhancement complete", data.get("enhancement_latency_ms", 0))
+        progress("enhancement", 0.6, "Enhancement complete", data.get("enhancement_latency_ms", 0))
+
+    if "diarization_latency_ms" in data:
+        dia_metrics = {}
+        if "speaker_segments" in data:
+            dia_metrics["n_speakers"] = len(set(s[2] for s in data["speaker_segments"]))
+            dia_metrics["n_segments"] = len(data["speaker_segments"])
+        progress("diarization", 0.75, "Diarization complete", data.get("diarization_latency_ms", 0), dia_metrics)
 
     if "asr_latency_ms" in data:
         progress("asr", 0.9, "ASR complete", data.get("asr_latency_ms", 0))

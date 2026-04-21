@@ -70,6 +70,10 @@ class WaveletVADModule(BaseVAD):
         self.min_speech_frames = min_speech_frames
         self.hangover_frames = hangover_frames
 
+        # Research Change 4: Adaptive Exponential Moving Average (EMA) for VAD
+        # Tracks noise floor dynamics across highly ambient environments
+        self.noise_ratio_ema = self.energy_threshold
+
         # Sub-band energy history for scalogram visualization
         self.sub_band_history = []
 
@@ -112,13 +116,23 @@ class WaveletVADModule(BaseVAD):
             e_high = energies["cD1"] + 1e-10
 
             ratio = e_low / e_high
+            
+            # Research Change 4: Exponential Moving Average Adaptive Tracking
+            # Check if likely noise frame (ratio < adaptive ceiling)
+            adaptive_ceiling = self.noise_ratio_ema * 2.5
+            if ratio < adaptive_ceiling:
+                # Smoothly update EMA during non-speech periods to track the room floor
+                self.noise_ratio_ema = 0.95 * self.noise_ratio_ema + 0.05 * ratio
+                
+            # Current adaptive threshold is tightly bounded to real-world floor
+            adaptive_threshold = self.noise_ratio_ema * 2.5
 
             # Convert ratio to probability via sigmoid-like mapping
             # P(speech) = ratio / (ratio + threshold)
             # When ratio == threshold: P = 0.5
             # When ratio >> threshold: P → 1.0
             # When ratio << threshold: P → 0.0
-            probs[i] = ratio / (ratio + self.energy_threshold)
+            probs[i] = ratio / (ratio + adaptive_threshold)
 
         # Apply min duration filtering on raw binary decisions
         raw_speech = probs > 0.5

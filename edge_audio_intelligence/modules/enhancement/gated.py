@@ -53,7 +53,7 @@ def detect_tonal_interference(
     from scipy.signal import welch
     from scipy.ndimage import median_filter
 
-    freqs, psd = welch(audio, fs=sr, nperseg=2048, noverlap=1024)
+    freqs, psd = welch(audio, fs=sr, nperseg=min(2048, len(audio)), noverlap=min(1024, len(audio) // 2))
     psd_db = 10 * np.log10(psd + 1e-20)
 
     freq_mask = (freqs >= min_freq) & (freqs <= max_freq)

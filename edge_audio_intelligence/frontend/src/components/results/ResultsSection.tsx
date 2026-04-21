@@ -19,7 +19,7 @@ function RatingBadge({ rating }: { rating: RatingLevel | null }) {
 // ── Metrics Table ──
 function MetricsTable({ metrics }: { metrics: Record<string, unknown> }) {
   const stages: Record<string, { key: string; value: number }[]> = {
-    SSL: [], Beamforming: [], Enhancement: [], ASR: [], System: [],
+    SSL: [], Beamforming: [], Enhancement: [], Diarization: [], ASR: [], System: [],
   };
 
   for (const [key, val] of Object.entries(metrics)) {
@@ -28,6 +28,7 @@ function MetricsTable({ metrics }: { metrics: Record<string, unknown> }) {
     if (key.includes('angular')) stages.SSL.push({ key, value: v });
     else if (key.includes('si_sdr')) stages.Beamforming.push({ key, value: v });
     else if (key === 'pesq' || key === 'stoi') stages.Enhancement.push({ key, value: v });
+    else if (key === 'der') stages.Diarization.push({ key, value: v });
     else if (key.includes('wer') || key.includes('cer')) stages.ASR.push({ key, value: v });
     else stages.System.push({ key, value: v });
   }
@@ -89,6 +90,8 @@ function StageCard({ stage, plots }: {
     'AtomicVAD + TEN VAD': ['vad_overlay'],
     'Wavelet-VAD': ['vad_overlay'],
     'AtomicVAD': ['vad_overlay'],
+    'Pyannote_3.1': ['diarization_timeline'],
+    'Pyannote_3.0': ['diarization_timeline'],
   };
 
   const plotKeys = plotMap[stage.method] || plotMap[stage.stage] || [];
@@ -244,6 +247,32 @@ export function ResultsSection() {
 
           {/* Metrics Table */}
           <MetricsTable metrics={result.metrics} />
+
+          {/* Speaker Segments (Diarization) */}
+          {result.speaker_segments && result.speaker_segments.length > 0 && (
+            <div>
+              <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">Speaker Segments</span>
+              <div className="space-y-1 mt-1">
+                {result.speaker_segments.map(([start, end, spk], i) => (
+                  <div key={i} className="flex items-center gap-2 bg-slate-50 rounded-lg px-3 py-1.5 border border-slate-100">
+                    <span className="text-[10px] font-semibold text-white rounded px-1.5 py-0.5"
+                      style={{ backgroundColor: ['#E53935','#1E88E5','#43A047','#FB8C00'][i % 4] }}>
+                      {spk}
+                    </span>
+                    <span className="text-xs text-slate-600 font-mono">
+                      {(start as number).toFixed(2)}s — {(end as number).toFixed(2)}s
+                    </span>
+                    <span className="text-[10px] text-slate-400">
+                      ({((end as number) - (start as number)).toFixed(1)}s)
+                    </span>
+                  </div>
+                ))}
+              </div>
+              {result.diarization_method && (
+                <p className="text-[10px] text-slate-400 mt-1">Method: {result.diarization_method}</p>
+              )}
+            </div>
+          )}
         </div>
       </section>
 

@@ -68,6 +68,7 @@ def _execute_pipeline(task_id: str, scene, req: PipelineRequest):
             enh_val=req.enh,
             asr_val=req.asr,
             vad_val=req.vad,
+            diarization_val=req.diarization,
             enh_gate=req.enh_gate,
             on_progress=on_progress,
         )
@@ -112,6 +113,8 @@ def _execute_pipeline(task_id: str, scene, req: PipelineRequest):
             "vad_method": data.get("vad_method", ""),
             "enhancement_applied": data.get("enhancement_applied", True),
             "enhancement_gate_reason": data.get("enhancement_gate_reason", ""),
+            "speaker_segments": [list(s) for s in data.get("speaker_segments", [])],
+            "diarization_method": data.get("diarization_method", ""),
         }
 
         with _tasks_lock:

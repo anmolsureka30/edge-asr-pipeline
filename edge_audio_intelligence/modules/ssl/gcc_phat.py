@@ -129,6 +129,14 @@ class GccPhatSSL(BaseSSL):
             "mic_pair_used": best_pair,
         }
 
+    def _wavelet_denoise_channel(self, signal: np.ndarray, wavelet='db4', level=1) -> np.ndarray:
+        import pywt
+        coeffs = pywt.wavedec(signal, wavelet, level=level)
+        sigma = np.median(np.abs(coeffs[-1])) / 0.6745
+        threshold = sigma * np.sqrt(2 * np.log(len(signal)))
+        coeffs[1:] = [pywt.threshold(c, threshold, mode='soft') for c in coeffs[1:]]
+        return pywt.waverec(coeffs, wavelet)[:len(signal)]
+
     def _gcc_phat(
         self,
         sig1: np.ndarray,
@@ -136,25 +144,17 @@ class GccPhatSSL(BaseSSL):
         fs: int,
         max_lag_override: int = None,
     ) -> tuple:
-        """Compute GCC-PHAT between two signals.
-
-        Ref: Eq. 1.1-1.3 from PIPELINE_ALGORITHM.md
-
-        Args:
-            sig1: First microphone signal [n_samples].
-            sig2: Second microphone signal [n_samples].
-            fs: Sample rate.
-            max_lag_override: Physics-based max lag from caller.
-
-        Returns:
-            Tuple of (gcc values, lag indices).
-        """
+        """Compute GCC-PHAT between two signals with Wavelet pre-denoising."""
         n = len(sig1) + len(sig2) - 1
         n_fft = max(self.n_fft, int(2 ** np.ceil(np.log2(n))))
 
+        # Research Improvement 1: Pre-denoise channel before FFT
+        clean_sig1 = self._wavelet_denoise_channel(sig1)
+        clean_sig2 = self._wavelet_denoise_channel(sig2)
+
         # Eq. 1.1: Cross-spectrum with PHAT weighting
-        X1 = np.fft.rfft(sig1, n=n_fft)
-        X2 = np.fft.rfft(sig2, n=n_fft)
+        X1 = np.fft.rfft(clean_sig1, n=n_fft)
+        X2 = np.fft.rfft(clean_sig2, n=n_fft)
         cross_spec = X1 * np.conj(X2)
 
         # PHAT: normalize by magnitude

@@ -69,8 +69,16 @@ class WhisperOfflineASR(BaseASR):
 
         try:
             import whisper
+            import torch
             self._logger.info(f"Loading Whisper {self.model_size} on {self.device}...")
             self._model = whisper.load_model(self.model_size, device=self.device)
+            
+            # Research Change 3: Int8 Dynamic Quantization of encoder
+            self._logger.info(f"Quantizing Whisper {self.model_size} encoder to int8...")
+            self._model.encoder = torch.quantization.quantize_dynamic(
+                self._model.encoder, {torch.nn.Linear}, dtype=torch.qint8
+            )
+            
             _whisper_cache[cache_key] = self._model
             self._logger.info("Whisper model loaded and cached.")
         except ImportError:

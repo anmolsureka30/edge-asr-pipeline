@@ -48,6 +48,11 @@ export const RATING_THRESHOLDS: Record<string, RatingThreshold> = {
     direction: 'lower_better', unit: '',
     format: (v) => v.toFixed(3),
   },
+  der: {
+    thresholds: [[0.10, 'Excellent'], [0.20, 'Good'], [0.40, 'Acceptable'], [99, 'Poor']],
+    direction: 'lower_better', unit: '%',
+    format: (v) => `${(v * 100).toFixed(1)}%`,
+  },
 };
 
 export function getRating(metricKey: string, value: number | null | undefined): RatingLevel | null {
@@ -91,6 +96,7 @@ export const METRIC_STAGE_MAP: Record<string, string> = {
   si_sdr_improvement_db: 'Beamforming',
   pesq: 'Enhancement',
   stoi: 'Enhancement',
+  der: 'Diarization',
   wer_avg: 'ASR',
   wer_source_0: 'ASR',
   wer_source_1: 'ASR',
@@ -103,6 +109,7 @@ export const METRIC_DISPLAY_NAMES: Record<string, string> = {
   si_sdr_improvement_db: 'SI-SDR Improvement',
   pesq: 'PESQ',
   stoi: 'STOI',
+  der: 'DER (Diarization Error Rate)',
   wer_avg: 'WER (avg)',
   wer_source_0: 'WER (source 0)',
   wer_source_1: 'WER (source 1)',
@@ -112,4 +119,5 @@ export const METRIC_DISPLAY_NAMES: Record<string, string> = {
   speech_frames: 'Speech Frames',
   noise_frames: 'Noise Frames',
   n_segments: 'Segments',
+  n_speakers: 'Speakers Detected',
 };

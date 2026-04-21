@@ -7,6 +7,13 @@ dist/
 build/
 *.so
 
+# Environment secrets
+.env
+.env.local
+dist/
+build/
+*.so
+
 # Virtual environment
 venv/
 .venv/
@@ -45,3 +52,8 @@ data/
 
 # Claude internal
 .claude/
+
+# Exclude generated binaries and visualizer script spaces
+scratch/
+.local/
+tectonic

@@ -3,7 +3,7 @@ import { useSceneStore } from '../../stores/sceneStore';
 import { useRunStore } from '../../stores/runStore';
 import { startPipelineRun, connectPipelineWS } from '../../api/client';
 import { PIPELINE_PRESETS } from '../../constants/presets';
-import { SSL_OPTIONS, BF_OPTIONS, ENH_OPTIONS, ASR_OPTIONS, VAD_OPTIONS, DISPLAY_NAMES, STAGE_COLORS } from '../../constants/options';
+import { SSL_OPTIONS, BF_OPTIONS, ENH_OPTIONS, ASR_OPTIONS, VAD_OPTIONS, DIARIZATION_OPTIONS, DISPLAY_NAMES, STAGE_COLORS } from '../../constants/options';
 import type { PipelineResult } from '../../types/pipeline';
 
 function Select({ label, value, options, onChange }: {
@@ -40,7 +40,7 @@ function FlowBadge({ label, color, isSkip }: { label: string; color: string; isS
 }
 
 function PipelineFlowDiagram() {
-  const { ssl, bf, enh, asr, vad, enhGate } = usePipelineStore();
+  const { ssl, bf, enh, asr, vad, diarization, enhGate } = usePipelineStore();
 
   const stages: { key: string; val: string; color: string; suffix?: string }[] = [];
 
@@ -56,6 +56,9 @@ function PipelineFlowDiagram() {
     key: 'enh', val: enh, color: STAGE_COLORS.enh,
     suffix: enhGate ? ' (gated)' : '',
   });
+  if (diarization !== 'none') {
+    stages.push({ key: 'diarization', val: diarization, color: STAGE_COLORS.diarization });
+  }
   stages.push({ key: 'asr', val: asr, color: STAGE_COLORS.asr });
 
   return (
@@ -85,7 +88,8 @@ export function PipelineSection() {
     try {
       const { task_id } = await startPipelineRun({
         scene_id: sceneId, ssl: pipe.ssl, bf: pipe.bf, enh: pipe.enh,
-        asr: pipe.asr, vad: pipe.vad, enh_gate: pipe.enhGate,
+        asr: pipe.asr, vad: pipe.vad, diarization: pipe.diarization,
+        enh_gate: pipe.enhGate,
       });
       run.setRunning(task_id);
 
@@ -132,11 +136,12 @@ export function PipelineSection() {
           )}
         </div>
 
-        {/* Stage dropdowns */}
-        <div className="grid grid-cols-5 gap-3">
+        {/* Stage dropdowns — 6 columns */}
+        <div className="grid grid-cols-6 gap-3">
           <Select label="SSL" value={pipe.ssl} options={SSL_OPTIONS} onChange={pipe.setSsl} />
           <Select label="Beamforming" value={pipe.bf} options={BF_OPTIONS} onChange={pipe.setBf} />
           <Select label="Enhancement" value={pipe.enh} options={ENH_OPTIONS} onChange={pipe.setEnh} />
+          <Select label="Diarization" value={pipe.diarization} options={DIARIZATION_OPTIONS} onChange={pipe.setDiarization} />
           <Select label="ASR" value={pipe.asr} options={ASR_OPTIONS} onChange={pipe.setAsr} />
           <Select label="VAD" value={pipe.vad} options={VAD_OPTIONS} onChange={pipe.setVad} />
         </div>
@@ -182,6 +187,7 @@ export function PipelineSection() {
                   {s.stage}: {s.latency_ms.toFixed(0)}ms
                   {s.metrics.angular_error != null && ` (${s.metrics.angular_error.toFixed(1)}\u00b0)`}
                   {s.metrics.speech_pct != null && ` (${s.metrics.speech_pct.toFixed(0)}% speech)`}
+                  {s.metrics.n_speakers != null && ` (${s.metrics.n_speakers} spkrs)`}
                 </span>
               ))}
             </div>

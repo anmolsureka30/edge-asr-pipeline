@@ -30,6 +30,12 @@ export const VAD_OPTIONS = [
   { label: 'Wavelet Energy (EE678)', value: 'wavelet_vad' },
 ];
 
+export const DIARIZATION_OPTIONS = [
+  { label: 'None (skip)', value: 'none' },
+  { label: 'Pyannote 3.1 (recommended)', value: 'pyannote_3.1' },
+  { label: 'Pyannote 3.0', value: 'pyannote_3.0' },
+];
+
 export const ROLE_OPTIONS = [
   { label: 'Target Speaker', value: 'target_speaker' },
   { label: 'Interfering Speaker', value: 'interfering_speaker' },
@@ -56,6 +62,8 @@ export const DISPLAY_NAMES: Record<string, string> = {
   spectral_subtraction: 'Spectral Sub', wavelet_enhancement: 'Wavelet Enh',
   whisper_tiny: 'Whisper tiny', whisper_base: 'Whisper base', whisper_small: 'Whisper small',
   full_vad: 'AtomicVAD+TEN', ten_vad: 'TEN VAD', atomic_vad: 'AtomicVAD', wavelet_vad: 'Wavelet VAD',
+  pyannote_3_1: 'Pyannote 3.1', pyannote_3_0: 'Pyannote 3.0',
+  'pyannote_3.1': 'Pyannote 3.1', 'pyannote_3.0': 'Pyannote 3.0',
   none: 'skip',
 };
 
@@ -64,6 +72,7 @@ export const STAGE_COLORS: Record<string, string> = {
   ssl: '#E8913A',
   bf: '#3A7EE8',
   enh: '#4CAF50',
+  diarization: '#00897B',
   asr: '#E53935',
 };
 

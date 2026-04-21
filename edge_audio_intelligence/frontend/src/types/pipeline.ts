@@ -5,6 +5,7 @@ export interface PipelineConfig {
   enh: string;
   asr: string;
   vad: string;
+  diarization: string;
   enh_gate: boolean;
 }
 
@@ -37,4 +38,6 @@ export interface PipelineResult {
   vad_method: string;
   enhancement_applied: boolean;
   enhancement_gate_reason: string;
+  speaker_segments: [number, number, string][];
+  diarization_method: string;
 }

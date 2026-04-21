@@ -49,6 +49,8 @@ class PipelineResultResponse(BaseModel):
     metrics: Dict[str, Any]
     total_latency_ms: float
     total_rtf: float
+    speaker_segments: List[List] = []  # [(start, end, speaker_id), ...]
+    diarization_method: str = ""
 
 
 class RunHistoryItem(BaseModel):

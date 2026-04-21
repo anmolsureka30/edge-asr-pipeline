@@ -50,7 +50,7 @@ class WaveletEnhancer(BaseEnhancer):
 
     def __init__(
         self,
-        wavelet: str = "bior2.2",
+        wavelet: str = "db4", # Research Change: Db4 replaces Bior2.2
         levels: int = 3,
         threshold_mode: str = "soft",
         threshold_scale: float = 1.0,
@@ -93,53 +93,36 @@ class WaveletEnhancer(BaseEnhancer):
 
         n_samples = len(audio)
 
-        # Step 1: J-level DWT decomposition
-        coeffs = pywt.wavedec(audio, self.wavelet, level=self.levels)
-        # coeffs = [cA_J, cD_J, cD_{J-1}, ..., cD_1]
-        # cA_J: approximation at coarsest level
-        # cD_j: detail at level j
+        # Research Change 2: Wavelet Packet Decomposition (WPD)
+        # Using periodic boundary mode to maintain O(N) complexity
+        wp = pywt.WaveletPacket(data=audio, wavelet=self.wavelet, mode='periodization', maxlevel=self.levels)
+        
+        # Extract terminal nodes ordered by frequency map
+        nodes = wp.get_level(self.levels, order='freq')
 
-        # Step 2: Estimate noise sigma from finest detail coefficients
-        # MAD estimator: sigma = median(|cD_1|) / 0.6745
-        # This is robust to outliers (speech components)
-        finest_detail = coeffs[-1]  # cD_1 (finest level)
-        sigma = self._estimate_noise_sigma(finest_detail)
-
-        # Step 3-4: Level-dependent thresholding
-        thresholded_coeffs = [coeffs[0]]  # Keep approximation untouched
-
-        for j, detail in enumerate(coeffs[1:], 1):
-            # Universal threshold: T = sigma * sqrt(2 * log(N))
-            n_coeff = len(detail)
+        for node in nodes:
+            coeffs = node.data
+            
+            # MAD noise scaling dynamically mapped specifically for this octave terminal
+            sigma = self._estimate_noise_sigma(coeffs)
+            
+            # Universal adaptive threshold formula
+            n_coeff = len(coeffs)
             threshold = (
-                sigma
-                * np.sqrt(2 * np.log(max(n_coeff, 2)))
+                sigma 
+                * np.sqrt(2 * np.log(max(n_coeff, 2))) 
                 * self.threshold_scale
             )
-
-            # Level-dependent scaling: fine details (cD_1 = 4-8kHz) contain mostly
-            # noise and should have LARGER thresholds (more aggressive zeroing).
-            # Coarse details (cD_J = low freq) contain speech and should have
-            # SMALLER thresholds (preserve speech formants).
-            # level_from_top=0 for coarsest detail, increases toward finest.
-            level_from_top = len(coeffs) - 1 - j
-            level_scale = 2 ** (level_from_top * 0.3)
-            threshold *= level_scale
-
+            
             if self.threshold_mode == "soft":
-                detail_thresh = self._soft_threshold(detail, threshold)
+                node.data = self._soft_threshold(coeffs, threshold)
             elif self.threshold_mode == "hard":
-                detail_thresh = self._hard_threshold(detail, threshold)
+                node.data = self._hard_threshold(coeffs, threshold)
             else:
-                detail_thresh = self._soft_threshold(detail, threshold)
+                node.data = self._soft_threshold(coeffs, threshold)
 
-            thresholded_coeffs.append(detail_thresh)
-
-        # Step 5: Inverse DWT reconstruction
-        enhanced = pywt.waverec(thresholded_coeffs, self.wavelet)
-
-        # Trim to original length (DWT may pad)
-        enhanced = enhanced[:n_samples].astype(np.float32)
+        # Reconstruct the WP tree
+        enhanced = wp.reconstruct(update=False)[:n_samples].astype(np.float32)
 
         return enhanced
 

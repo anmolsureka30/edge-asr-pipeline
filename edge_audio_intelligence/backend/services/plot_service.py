@@ -132,6 +132,60 @@ def make_spatial_spectrum_fig(spectrum: np.ndarray, title: str = "Spatial Spectr
     return fig.to_plotly_json()
 
 
+def make_diarization_timeline_fig(
+    speaker_segments: list,
+    duration_s: float,
+    title: str = "Speaker Diarization",
+) -> dict:
+    """Create a diarization timeline showing speaker turns as Plotly JSON."""
+    # Assign consistent colors per speaker
+    speaker_colors = {}
+    palette = [
+        "#E53935", "#1E88E5", "#43A047", "#FB8C00",
+        "#8E24AA", "#00ACC1", "#F4511E", "#3949AB",
+    ]
+    color_idx = 0
+
+    fig = go.Figure()
+
+    # Build one trace per speaker for a clean legend
+    speakers_data: dict = {}
+    for start, end, spk in speaker_segments:
+        if spk not in speakers_data:
+            speakers_data[spk] = []
+        speakers_data[spk].append((start, end))
+
+        if spk not in speaker_colors:
+            speaker_colors[spk] = palette[color_idx % len(palette)]
+            color_idx += 1
+
+    for i, (spk, segs) in enumerate(speakers_data.items()):
+        for s_start, s_end in segs:
+            fig.add_trace(go.Bar(
+                x=[s_end - s_start],
+                y=[spk],
+                base=[s_start],
+                orientation="h",
+                marker=dict(color=speaker_colors[spk], opacity=0.85),
+                name=spk,
+                showlegend=(segs.index((s_start, s_end)) == 0),
+                hovertemplate=f"{spk}: {s_start:.2f}s – {s_end:.2f}s<extra></extra>",
+            ))
+
+    fig.update_layout(
+        title=title,
+        xaxis_title="Time (s)",
+        xaxis=dict(range=[0, duration_s]),
+        yaxis_title="Speaker",
+        barmode="overlay",
+        height=140 + 30 * len(speakers_data),
+        margin=dict(l=80, r=10, t=30, b=30),
+        showlegend=True,
+        legend=dict(orientation="h", y=-0.3),
+    )
+    return fig.to_plotly_json()
+
+
 def generate_all_plots(data: dict, scene) -> dict:
     """Generate all stage plots from pipeline output.
 
@@ -174,5 +228,14 @@ def generate_all_plots(data: dict, scene) -> dict:
         plots["enh_waveform"] = make_waveform_fig(enh, sr, "Enhanced")
         plots["enh_spectrogram"] = make_spectrogram_fig(enh, sr, "Enhanced Spectrogram")
         plots["enh_scalogram"] = make_scalogram_fig(enh, sr, "Enhanced Scalogram")
+
+    # Diarization timeline
+    if "speaker_segments" in data and len(data["speaker_segments"]) > 0:
+        duration = scene.multichannel_audio.shape[-1] / sr if scene.multichannel_audio is not None else 10.0
+        plots["diarization_timeline"] = make_diarization_timeline_fig(
+            data["speaker_segments"],
+            duration,
+            f"Diarization: {data.get('diarization_method', '?')}",
+        )
 
     return plots

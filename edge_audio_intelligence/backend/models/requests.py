@@ -47,6 +47,7 @@ class PipelineRequest(BaseModel):
     enh: str = "spectral_subtraction"
     asr: str = "none"
     vad: str = "none"
+    diarization: str = "none"
     enh_gate: bool = False
 
 

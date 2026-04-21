@@ -12,13 +12,19 @@ import logging
 import sys
 from pathlib import Path
 
+# Load .env BEFORE any pipeline imports (HF_TOKEN needed for pyannote)
+from dotenv import load_dotenv
+
+_project_root = str(Path(__file__).parent.parent.parent)
+_env_path = Path(_project_root) / ".env"
+load_dotenv(_env_path)
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .config import CORS_ORIGINS, HOST, PORT
 
 # Ensure the project root is on sys.path for imports
-_project_root = str(Path(__file__).parent.parent.parent)
 if _project_root not in sys.path:
     sys.path.insert(0, _project_root)
 
