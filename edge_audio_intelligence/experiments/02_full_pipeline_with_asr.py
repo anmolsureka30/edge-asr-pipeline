@@ -21,6 +21,7 @@ from edge_audio_intelligence.testbench.scene import (
     SourceConfig,
     MicArrayConfig,
 )
+from edge_audio_intelligence.modules.diarization.pyannote_diarizer import PyannoteDiarizer
 from edge_audio_intelligence.testbench.simulator import RIRSimulator
 from edge_audio_intelligence.testbench.evaluator import PipelineEvaluator
 from edge_audio_intelligence.modules.ssl import GccPhatSSL, SrpPhatSSL, MusicSSL
@@ -126,6 +127,7 @@ def run_full_pipeline():
     pipeline.add_module(GccPhatSSL(n_fft=1024))
     pipeline.add_module(DelayAndSumBeamformer(use_fractional_delay=True))
     pipeline.add_module(SpectralSubtractionEnhancer(alpha=2.0, beta=0.01))
+    pipeline.add_module(PyannoteDiarizer(name="Pyannote_3.1", model_name="pyannote/speaker-diarization-3.1"))
     pipeline.add_module(WhisperOfflineASR(model_size="base", device="cpu"))
 
     logger.info(f"Pipeline: {pipeline}")
