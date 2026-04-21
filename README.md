@@ -107,6 +107,9 @@ PYTHONPATH=. python edge_audio_intelligence/experiments/01_baseline_pipeline.py 
 # Run enhancement comparison: Spectral Subtraction vs Wavelet
 PYTHONPATH=. python edge_audio_intelligence/experiments/01_baseline_pipeline.py --mode enhancement
 
+# Run Diarization comparison: Pyannote Diarization
+ PYTHONPATH=. python edge_audio_intelligence/experiments/04_diarization_comparison.py 
+
 # Run all experiments
 PYTHONPATH=. python edge_audio_intelligence/experiments/01_baseline_pipeline.py --mode all
 ```
