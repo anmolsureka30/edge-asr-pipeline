@@ -294,6 +294,40 @@ class PipelineEvaluator:
             metrics=metrics,
             latency_ms=latency,
         )
+    
+    def evaluate_diarization(
+        self,
+        data: Dict[str, Any],
+        scene: Any,
+    ) -> ModuleResult:
+        """Evaluate diarization output using DER (Diarization Error Rate)."""
+        metrics = {}
+        from edge_audio_intelligence.utils.metrics import diarization_error_rate
+        
+        if "speaker_segments" in data:
+            hyp_segments = data["speaker_segments"]
+            
+            # Construct ground truth segments from the scene configuration
+            ref_segments = []
+            if hasattr(scene, 'config') and hasattr(scene.config, 'sources'):
+                for i, src in enumerate(scene.config.sources):
+                    start = getattr(src, 'onset_s', 0.0)
+                    end = getattr(src, 'offset_s', -1.0)
+                    if end < 0: 
+                        end = scene.config.duration_s
+                    label = getattr(src, 'label', f"SPEAKER_{i:02d}")
+                    ref_segments.append((start, end, label))
+            
+            if ref_segments:
+                metrics["der"] = diarization_error_rate(ref_segments, hyp_segments)
+
+        latency = data.get("diarization_latency_ms", 0.0)
+        return ModuleResult(
+            module_name=data.get("diarization_method", "diarization"),
+            metrics=metrics,
+            latency_ms=latency,
+        )
+
 
     def run_full_evaluation(
         self,
@@ -336,6 +370,9 @@ class PipelineEvaluator:
             if result.module_results[-1].metrics.get("wer_avg") is not None:
                 result.end_to_end_wer = result.module_results[-1].metrics["wer_avg"]
 
+        if "speaker_segments" in data:
+            result.module_results.append(self.evaluate_diarization(data, scene))
+
         # Total latency
         result.total_latency_ms = sum(mr.latency_ms for mr in result.module_results)
 
@@ -377,16 +414,18 @@ class PipelineEvaluator:
 
         lines = [
             f"{'Scene':<12} {'SNR':>5} {'RT60':>5} "
-            f"{'SSL err':>8} {'BF SDR':>8} {'PESQ':>6} {'WER':>6} "
+            f"{'SSL err':>8} {'BF SDR':>8} {'PESQ':>6} {'WER':>6} {'DER':>6} "
             f"{'Latency':>8} {'RTF':>6}"
         ]
-        lines.append("-" * 75)
+        # Increased the separator length slightly to account for the new column
+        lines.append("-" * 82)
 
         for r in self.all_results:
             ssl_err = "--"
             bf_sdr = "--"
             pesq_val = "--"
             wer = "--"
+            der_val = "--"
 
             for mr in r.module_results:
                 if "angular_error_deg" in mr.metrics:
@@ -397,10 +436,12 @@ class PipelineEvaluator:
                     pesq_val = f"{mr.metrics['pesq']:.2f}"
                 if "wer_avg" in mr.metrics:
                     wer = f"{mr.metrics['wer_avg']:.3f}"
+                if "der" in mr.metrics:
+                    der_val = f"{mr.metrics['der']:.3f}"
 
             lines.append(
                 f"{r.scene_id:<12} {r.snr_db:>5.0f} {r.rt60:>5.1f} "
-                f"{ssl_err:>8} {bf_sdr:>8} {pesq_val:>6} {wer:>6} "
+                f"{ssl_err:>8} {bf_sdr:>8} {pesq_val:>6} {wer:>6} {der_val:>6} "
                 f"{r.total_latency_ms:>7.1f}ms {r.total_rtf:>6.3f}"
             )
 
