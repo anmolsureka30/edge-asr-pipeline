@@ -14,6 +14,19 @@ PyWavelets>=1.4.0
 pesq>=0.0.4
 pystoi>=0.3.3
 
+# --- V2: Speaker Diarization ---
+pyannote.audio>=3.1.0
+pyannote.metrics
+onnxruntime
+
+# --- Deep Learning Backend (PyTorch) ---
+# Note: For GPU acceleration, install these manually with your specific CUDA version.
+# Example for CUDA 12.1: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch
+torchvision>=0.16.0
+torchaudio
+torchmetrics>=1.0.0
+
 # ASR (install separately - large)
 # openai-whisper>=20230918
 
