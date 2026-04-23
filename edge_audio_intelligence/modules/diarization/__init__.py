@@ -1,3 +1,4 @@
-"""Speaker diarization modules (V2 scope)."""
+from .base import BaseDiarizer # Assuming this exists based on the file structure
+from .pyannote_diarizer import PyannoteDiarizer
 
-from .base import BaseDiarizer
+__all__ = ["BaseDiarizer", "PyannoteDiarizer"]
